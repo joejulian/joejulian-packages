@@ -1,0 +1,30 @@
+joejulian-packages
+==================
+:Author:   Joe Julian
+:Email:    <me@joejulian.name>
+:Date:     2013-04-16
+:Revision: 0.0.1
+
+joejulian-packages
+------------------
+
+Many modules have conflicting packages included in their classes. By abstracing those packages into their own classes, they can be included without conflicting.
+
+.This can be included in every class that has this requirement:
+-----
+include packages::pythonredis
+-----
+
+License
+-------
+Apache License, Version 2.0
+
+
+Contact
+-------
+Joe Julian <me@joejulian.name>
+
+Support
+-------
+
+Please log tickets and issues at http://github.com/joejulian/joejulian-packages[github]
