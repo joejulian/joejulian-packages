@@ -26,22 +26,23 @@
 # Copyright 2013 Joe Julian
 #
 class packages::ujson (
-  ensure => installed
+  $ensure = 'installed'
 ) {
-case $::operatingsystem {
-  rhel, centos: {
-    include yum::supplemental::ewcs
-    package { 'python-ujson':
-      ensure  => $ensure,
-      require => Yumrepo['ewcs'],
+  case $::operatingsystem {
+    rhel, centos: {
+      include yum::supplemental::ewcs
+      package { 'python-ujson':
+        ensure  => $ensure,
+        require => Yumrepo['ewcs'],
+      }
     }
-  }
-  fedora: {
-    package { 'python-ujson':
-      ensure  => $ensure,
+    fedora: {
+      package { 'python-ujson':
+        ensure  => $ensure,
+      }
     }
-  }
-  default: {
-    fail("This operating system is not yet supported.")
+    default: {
+      fail("This operating system is not yet supported.")
+    }
   }
 }

@@ -26,14 +26,16 @@
 # Copyright 2013 Joe Julian
 #
 class packages::python_pip (
-  ensure => installed
+  $ensure = 'installed'
 ) {
-case $::operatingsystem {
-  rhel, centos, fedora: {
-    package { 'python-pip':
-      ensure => $ensure,
+  case $::operatingsystem {
+    rhel, centos, fedora: {
+      package { 'python-pip':
+        ensure => $ensure,
+      }
     }
-  default: {
-    fail("This operating system is not yet supported.")
+    default: {
+      fail("This operating system is not yet supported.")
+    }
   }
 }

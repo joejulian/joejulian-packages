@@ -25,28 +25,30 @@
 #
 # Copyright 2013 Joe Julian
 #
+## TODO change this to use hiera to set the version instead of doing it here
 class packages::pythonredis (
-  ensure => "2.4.11"
+  $ensure = "2.4.11"
 ) {
-case $::operatingsystem {
-  rhel, centos: {
-    include packages::python_pip
+  case $::operatingsystem {
+    rhel, centos: {
+      include packages::python_pip
 
-    package { "python-redis":
-      provider => "pip",
-      name     => "redis",
-      ensure   => $ensure,
-      require  => Package['python-pip'],
+      package { "python-redis":
+        provider => "pip",
+        name     => "redis",
+        ensure   => $ensure,
+        require  => Package['python-pip'],
+      }
     }
-  }
-  fedora: {
-    include packages::python_pip
-    package { "python-redis":
-      ensure  => $ensure,
-      require => Package['python-pip'],
+    fedora: {
+      include packages::python_pip
+      package { "python-redis":
+        ensure  => $ensure,
+        require => Package['python-pip'],
+      }
     }
-  }
-  default: {
-    fail("This operating system is not yet supported.")
+    default: {
+      fail("This operating system is not yet supported.")
+    }
   }
 }

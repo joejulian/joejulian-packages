@@ -26,14 +26,16 @@
 # Copyright 2013 Joe Julian
 #
 class packages::git (
-  ensure => installed
+  $ensure = 'installed'
 ) {
-case $::operatingsystem {
-  rhel, centos: {
-    package { 'git':
-      ensure => $ensure,
+  case $::operatingsystem {
+    rhel, centos: {
+      package { 'git':
+        ensure => $ensure,
+      }
     }
-  default: {
-    fail("This operating system is not yet supported.")
+    default: {
+      fail("This operating system is not yet supported.")
+    }
   }
 }

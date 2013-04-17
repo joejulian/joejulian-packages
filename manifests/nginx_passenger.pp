@@ -26,17 +26,18 @@
 # Copyright 2013 Joe Julian
 #
 class packages::nginx_passenger (
-  ensure => installed
+  $ensure = 'installed'
 ) {
-case $::operatingsystem {
-  rhel, centos: {
-    include yum::supplemental::phusion
-    package { 'nginx-passenger':
-      ensure  => $ensure,
-      require => Yumrepo['phusion'],
+  case $::operatingsystem {
+    rhel, centos: {
+      include yum::supplemental::phusion
+      package { 'nginx-passenger':
+        ensure  => $ensure,
+        require => Yumrepo['phusion'],
+      }
     }
-  }
-  default: {
-    fail("This operating system is not yet supported.")
+    default: {
+      fail("This operating system is not yet supported.")
+    }
   }
 }
