@@ -8,4 +8,4 @@ description 'Since multiple classes often require the same packages, conflicts o
 project_page 'http://github.com/joejulian/joejulian-packages'
 
 ## dependencies:
-dependency 'joejulian/yum' >= '2.0.1'
+dependency 'joejulian/yum', '>= 2.0.1'
