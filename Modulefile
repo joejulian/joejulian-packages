@@ -1,5 +1,5 @@
 name    'joejulian-packages'
-version '0.0.1'
+version '0.0.2'
 source 'http://github.com/joejulian/joejulian-packages'
 author 'joejulian'
 license 'Apache License, Version 2.0'
