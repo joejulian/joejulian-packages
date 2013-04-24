@@ -29,7 +29,7 @@ class packages::git (
   $ensure = 'installed'
 ) {
   case $::operatingsystem {
-    rhel, centos: {
+    rhel, centos, fedora: {
       package { 'git':
         ensure => $ensure,
       }

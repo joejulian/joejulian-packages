@@ -30,7 +30,7 @@ class packages::pythonpika (
 ) {
   case $::operatingsystem {
     rhel, centos, fedora: {
-      if ( $operatingsystem == "Fedora" and $operatingsystemrelease > 17 ) {
+      if ( $operatingsystem == "Fedora" and $operatingsystemrelease >= 17 ) {
         $repo_required = "base"
         } else {
           include yum::supplemental::epel
