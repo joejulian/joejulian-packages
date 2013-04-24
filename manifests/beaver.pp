@@ -32,20 +32,20 @@ class packages::beaver (
     rhel, centos, fedora: {
       include packages::python_pip
       include packages::git
-      include packages::ujson
+      include packages::pythonsimplejson
       include packages::pythonargparse
       include packages::pythonpika
       include packages::pythonredis
       include packages::pythonordereddict
       include packages::pythondaemon
-      package { "beaver":
+      package { "Beaver":
         provider => "pip",
         ensure   => installed,
-        source   => "git+git://github.com/josegonzalez/beaver.giti#egg=beaver",
+        source   => "git+git://github.com/josegonzalez/beaver.git#egg=beaver",
         require  => [ 
           Package['python-pip'],
           Package['git'],
-          Package['ujson'],
+          Package['python-simplejson'],
           Package['python-argparse'],
           Package['python-pika'],
           Package['python-redis'],
